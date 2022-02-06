@@ -1,6 +1,27 @@
 <?php
 
 include '../model/connection.php';
+session_start();
+
+function login($email,$password){
+    $conn = connect_db();
+    $sql = "SELECT * FROM login_cred INNER JOIN students_cred ON login_cred.login_id = students_cred.student_id WHERE login_cred.email = '$email' AND login_cred.password = '$password'";
+    $result = $conn->query($sql);
+
+    if($result->num_rows == 1){
+        $rows = $result->fetch_assoc();
+
+        $_SESSION['id'] = $rows['student_id'];
+        $_SESSION['fname'] = $rows['fname'];
+        $_SESSION['lname'] = $rows['lname'];
+
+        return TRUE;
+
+
+    }else{
+        return FALSE;
+    }
+}
 
 function register($fname, $lname, $mothers_name, $fathers_name, $address, $gender, $state, $city, $course, $email)
 {
@@ -47,5 +68,7 @@ function create_login($email,$student_id){
     }
     
 }
+
+
 
 ?>
