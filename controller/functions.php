@@ -69,6 +69,21 @@ function create_login($email,$student_id){
     
 }
 
+ function get_students(){
+     $conn = connect_db();
+     $sql = "SELECT * FROM students_cred";
+     $result = $conn->query($sql);
+
+     if($result->num_rows>0){
+         $rows = array();
+         while($row = $result->fetch_assoc()){
+             $rows[] = $row;
+
+         }
+         return $rows;
+     }
+    
+    }
 
 
 ?>

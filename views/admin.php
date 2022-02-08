@@ -9,13 +9,12 @@ include './html//header.html';
 
 
         <div class="row mt-3">
-            <nav class="navbar navbar-expand navbar-light bg-white">
-                <div class="nav navbar-nav">
-                    <a class="nav-item nav-link active" href="#">Home <span class="visually-hidden">(current)</span></a>
-                    <a class="nav-item nav-link" href="#">Home</a>
-                </div>
+            <?php include 'navbar-students.php'; ?>
+        </div>
 
-            </nav>
+        <div class="row mt-3">
+            <div class="col-6 d-grid"><a href="" class="btn btn-outline-success">Create a questionaire</a></div>
+            <div class="col-6 d-grid"><a href="" class="btn btn-outline-danger">Create a new report</a></div>
         </div>
         <div class="row">
             <div class="col-6">
@@ -26,14 +25,13 @@ include './html//header.html';
         <div class="row mt-3">
             <div class="col-12">
                 <div class="row">
-                    <div class="col-3 p-5 bg-info mx-1">
-                        <p class="lead text-light">
-                            DASHBOARD
-                        </p>
-                    </div>
+
+
                     <div class="col-3 p-5 bg-warning mx-1">
                         <p class="lead text-light">
-                            MANAGE USERS <i class="fas fa-users"></i>
+                            <a href="manage-users.php" class="text-decoration-none text-light">
+                                MANAGE USERS <i class="fas fa-users"></i>
+                            </a>
                         </p>
                     </div>
                     <div class="col-3 p-5 bg-success mx-1">
@@ -94,12 +92,24 @@ include './html//header.html';
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Modal title</h5>
+                                                <h5 class="modal-title lead">Teacher's Profile</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="container-fluid">
-                                                    Add rows here
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <img src="../images/sherlock-holmes.jpeg" alt="" class="card-img-top">
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <p class="font-monospace">Name: Sherlock Holmes</p>
+                                                            <p class="font-monospace">Age: 43</p>
+                                                            <p class="font-monospace">Contact Number: Sherlock Holmes</p>
+                                                            <p class="font-monospace">Department: Criminology</p>
+
+
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
