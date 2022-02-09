@@ -1,6 +1,19 @@
 <?php
 include '../controller/functions.php';
 include './html/header.html';
+if(!empty($_GET['id'])){
+    $id = $_GET['id'];
+}else{
+    $id = $_SESSION['id'];
+}
+
+
+
+$data = get_specific_student($id);
+
+if(empty($data)){
+    die('ERROR RETRIEVING DATA');
+}
 
 ?>
 
@@ -43,38 +56,38 @@ include './html/header.html';
                         <!-- Form Group (username)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
-                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="username">
+                            <input class="form-control" id="inputUsername" type="text" value="<?php echo $data['email'] ?>">
                         </div>
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (first name)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputFirstName">First name</label>
-                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie">
+                                <input class="form-control" id="inputFirstName" type="text" value="<?php echo $data['fname'] ?>">
                             </div>
                             <!-- Form Group (last name)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputLastName">Last name</label>
-                                <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna">
+                                <input class="form-control" id="inputLastName" type="text" value="<?php echo $data['lname'] ?>">
                             </div>
                         </div>
                         <!-- Form Row        -->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (organization name)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputOrgName">Organization name</label>
-                                <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Start Bootstrap">
+                                <label class="small mb-1" for="inputOrgName">Course name</label>
+                                <input class="form-control" id="inputOrgName" type="text"  value="<?php echo $data['course'] ?>">
                             </div>
                             <!-- Form Group (location)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputLocation">Location</label>
-                                <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="San Francisco, CA">
+                                <input class="form-control" id="inputLocation" type="text" value="<?php echo $data['state']." ".$data['city'] ?>">
                             </div>
                         </div>
                         <!-- Form Group (email address)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com">
+                            <input class="form-control" id="inputEmailAddress" type="email" value="<?php echo $data['email'] ?>">
                         </div>
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
@@ -86,7 +99,7 @@ include './html/header.html';
                             <!-- Form Group (birthday)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
+                                <input class="form-control" id="inputBirthday" type="date" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
                             </div>
                         </div>
                         <!-- Save changes button-->

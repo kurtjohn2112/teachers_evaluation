@@ -85,5 +85,22 @@ function create_login($email,$student_id){
     
     }
 
+     function get_specific_student($id){
+
+        $conn = connect_db();
+        $sql = "SELECT * FROM students_cred INNER JOIN login_cred ON students_cred.student_id = login_cred.student_id WHERE students_cred.student_id =  '$id'";
+        $result = $conn->query($sql);
+   
+        if($result == TRUE){
+            return $result->fetch_assoc();
+           
+        }else{
+            return FALSE;
+        }
+       
+      
+
+    }
+
 
 ?>
