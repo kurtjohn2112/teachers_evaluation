@@ -1,13 +1,13 @@
-<link rel="stylesheet" href="../css/login.css">
+<link rel="stylesheet" href="css/login.css">
 
- <?php include 'html/header.html'; ?>
+ <?php include 'views/html/header.html'; ?>
  <div class="form-bg">
      <div class="container">
          <div class="row">
              <div class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6 mx-auto mt-5">
                  <div class="form-container">
                      <h3 class="title">My Account</h3>
-                     <form method="post" action="../controller/login.php" class="form-horizontal">
+                     <form method="post" action="controller/login.php" class="form-horizontal">
                          <div class="form-icon">
                              <i class="fa fa-user-circle"></i>
                          </div>
@@ -30,4 +30,4 @@
 
 
 
- <?php include 'html/footer.html'; ?>
+ <?php include 'views/html/footer.html'; ?>
