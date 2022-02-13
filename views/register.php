@@ -30,13 +30,13 @@
                                         <div class="col-md-6 mb-4">
                                             <div class="form-outline">
                                                 <input type="text" id="form3Example1m" name="fname" class="form-control form-control-lg" />
-                                                <label class="form-label" for="form3Example1m">First name</label>
+                                                <div class="form-text">Firstname</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-4">
                                             <div class="form-outline">
                                                 <input type="text" id="form3Example1n" name="lname" class="form-control form-control-lg" />
-                                                <label class="form-label" for="form3Example1n">Last name</label>
+                                                <div class="form-text">Lastname</div>
                                             </div>
                                         </div>
                                     </div>
@@ -44,16 +44,56 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-4">
                                             <div class="form-outline">
-                                                <input type="text" id="form3Example1m1" name="mothers_name" class="form-control form-control-lg" />
-                                                <label class="form-label" for="form3Example1m1">Mother's name</label>
+
+                                                <?php
+                                                include '../controller/functions.php';
+
+                                                ?>
+                                                <select name="course" class="form-select form-select-lg" id="">
+                                                    <?php
+
+
+                                                    foreach (get_specific_table('courses') as $row) {
+                                                        $course = $row['course_name']; ?>
+                                                        <option value="<?php $course ?>"><?php echo $course ?></option>
+
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                                <div class="form-text">Select a course</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-4">
-                                            <div class="form-outline">
-                                                <input type="text" id="form3Example1n1" name="fathers_name" class="form-control form-control-lg" />
-                                                <label class="form-label" for="form3Example1n1">Father's name</label>
-                                            </div>
+                                            <select name="department" class="form-select form-select-lg" id="">
+                                                <?php
+
+
+                                                foreach (get_specific_table('departments') as $row) {
+                                                    $department = $row['department_name']; ?>
+                                                    <option value="<?php echo $department ?>"><?php echo $course ?></option>
+
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                            <div class="form-text">Select a Department</div>
                                         </div>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                             <select name="class_section" class="form-select form-select-lg" id="">
+                                                <?php
+
+
+                                                foreach (get_specific_table('classes') as $row) {
+                                                    $section = $row['class_name']; ?>
+                                                    <option value="<?php echo $section ?>"><?php echo $course ?></option>
+
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                            <div class="form-text">Select a class section</div>
                                     </div>
 
                                     <div class="form-outline mb-4">
@@ -85,36 +125,52 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-4">
 
-                                            <select class="select" name="state">
-                                                <option value="1" hidden selected disabled>State</option>
-                                                <option value="2">Option 1</option>
-                                                <option value="3">Option 2</option>
-                                                <option value="4">Option 3</option>
-                                            </select>
+                                           <select name="state" id="" class="form-select form-select-lg">
+                                               <option value="1">1</option>
+                                           </select>
+                                           <div class="form-text">State</div>
 
                                         </div>
                                         <div class="col-md-6 mb-4">
 
-                                            <select class="select" name="city">
-                                                <option value="1" hidden selected disabled>City</option>
-                                                <option value="2">Option 1</option>
-                                                <option value="3">Option 2</option>
-                                                <option value="4">Option 3</option>
-                                            </select>
+                                        <select name="city" id="" class="form-select form-select-lg">
+                                               <option value="1">1</option>
+                                           </select>
+                                           <div class="form-text">City</div>
 
                                         </div>
                                     </div>
 
-                                   
+
 
                                     <div class="form-outline mb-4">
-                                        <input type="text" id="form3Example99" name="course" class="form-control form-control-lg" />
-                                        <label class="form-label" for="form3Example99">Course</label>
+                                    <select name="user_type" id="" class="form-select form-select-lg">
+                                            <option value="student">Student</option>
+                                            <option value="faculty">Faculty</option>
+                                            <option value="chairpairson">Chairperson</option>
+                                            <option value="collegedean">College Dean</option>
+                                            <option value="deanofinstruction">Dean of Instruction</option>
+                                        </select>
+                                        <div class="form-text">User type</div>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                    <select name="year_level" id="" class="form-select form-select-lg">
+                                            <option value="first_year">First Year</option>
+                                            <option value="second_year">Second Year</option>
+                                            <option value="third_year">Third Year</option>
+                                            <option value="fourth_year">Fourth Year</option>
+                                          
+                                        </select>
+                                        <div class="form-text">User type</div>
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <input type="text" id="form3Example97" name="email" class="form-control form-control-lg" />
                                         <label class="form-label" for="form3Example97">Email ID</label>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="password" id="form3Example97" name="password" class="form-control form-control-lg" />
+                                        <label class="form-label" for="form3Example97">Password</label>
                                     </div>
 
                                     <div class="d-flex justify-content-end pt-3">

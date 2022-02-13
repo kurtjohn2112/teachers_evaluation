@@ -22,6 +22,7 @@
                          </div>
                          <button class="btn signin">Login</button>
                      </form>
+                     <a href="views/register.php" class="text-light">No account? Register here</a>
                  </div>
              </div>
          </div>

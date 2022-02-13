@@ -7,16 +7,20 @@ include 'functions.php';
 
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
-$m_name = $_POST['mothers_name'];
-$f_name = $_POST['fathers_name'];
+$course = $_POST['course'];
+$department = $_POST['department'];
+$section = $_POST['class_section'];
+$status = $_POST['user_type'];
 $address = $_POST['address'];
 $gender = $_POST['gender'];
 $state = $_POST['state'];
 $city = $_POST['city'];
 $course = $_POST['course'];
 $email = $_POST['email'];
+$year_level = $_POST['year_level'];
+$password = $_POST['password'];
 
-$eval = register($fname,$lname,$m_name,$f_name,$address,$gender,$state,$city,$course,$email);
+$eval = register($fname,$lname,$department,$section,$address,$gender,$state,$city,$course,$email,$state,$year_level,$password);
 
 if($eval == TRUE){
    echo '<script>
