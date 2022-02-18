@@ -10,17 +10,17 @@ $lname = $_POST['lname'];
 $course = $_POST['course'];
 $department = $_POST['department'];
 $section = $_POST['class_section'];
+$college = $_POST['college'];
 $status = $_POST['user_type'];
 $address = $_POST['address'];
 $gender = $_POST['gender'];
-$state = $_POST['state'];
-$city = $_POST['city'];
+
 $course = $_POST['course'];
 $email = $_POST['email'];
 $year_level = $_POST['year_level'];
 $password = $_POST['password'];
 
-$eval = register($fname,$lname,$department,$section,$address,$gender,$state,$city,$course,$email,$state,$year_level,$password);
+$eval = register($fname,$lname,$department,$section,$college,$address,$gender,$course,$email,$status,$year_level,$password);
 
 if($eval == TRUE){
    echo '<script>

@@ -22,10 +22,10 @@ function login($email, $password)
     }
 }
 
-function register($fname, $lname, $department, $section, $address, $gender, $state, $city, $course, $email,$status,$year_level,$password)
+function register($fname, $lname, $department, $section,$college, $address, $gender, $course, $email,$status,$year_level,$password)
 {
     $conn = connect_db();
-    $sql = "INSERT INTO students_cred(fname, lname, department, section, address, gender, state, city, course, status, year_level) VALUES ('$fname', '$lname', '$department', '$section', '$address', '$gender', '$state', '$city', '$course','$status','$year_level')";
+    $sql = "INSERT INTO students_cred(fname, lname, department, section,college, address, gender, course, status, year_level) VALUES ('$fname', '$lname', '$department', '$section','$college', '$address', '$gender', '$course','$status','$year_level')";
     $result = $conn->query($sql);
 
     if ($result == TRUE) {
@@ -73,7 +73,7 @@ function create_login($email,$password, $student_id)
 function get_students()
 {
     $conn = connect_db();
-    $sql = "SELECT * FROM students_cred";
+    $sql = "SELECT * FROM students_cred INNER JOIN login_cred ON students_cred.student_id = login_cred.login_id";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -115,6 +115,51 @@ function get_specific_table($table_name)
     
 }
 
+function delete_item($table_name,$pk_column,$primary_key){
+    $conn = connect_db();
+    $sql = "DELETE FROM $table_name WHERE $pk_column = '$primary_key' ";
+    $result = $conn->query($sql);
+
+    header('location:../views/college.php');
+
+}
+function get_one_data($table,$pk_column,$id){
+    $conn = connect_db();
+    $sql = "SELECT * FROM $table WHERE $pk_column ='$id' ";
+    $result = $conn->query($sql);
+
+    return $result->fetch_assoc();
+    
+
+}
+
+function create_college($college_name,$collge_desc)
+{
+    $conn = connect_db();
+    $sql = "INSERT INTO departments(department_name,department_details)VALUES('$college_name','$collge_desc')";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('Refresh:0');
+      
+    } else {
+       return false;
+    }
+}
+
+function update_college($name,$desc,$id){
+    $conn = connect_db();
+    $sql ="UPDATE departments SET department_name = '$name', department_details = '$desc' WHERE department_id = '$id'";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('location:college.php');
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
+
+}
 
 
 ?>

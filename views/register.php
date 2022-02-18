@@ -71,7 +71,7 @@
 
                                                 foreach (get_specific_table('departments') as $row) {
                                                     $department = $row['department_name']; ?>
-                                                    <option value="<?php echo $department ?>"><?php echo $course ?></option>
+                                                    <option value="<?php echo $department ?>"><?php echo $department ?></option>
 
                                                 <?php
                                                 }
@@ -94,6 +94,21 @@
                                                 ?>
                                             </select>
                                             <div class="form-text">Select a class section</div>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                             <select name="college" class="form-select form-select-lg" id="">
+                                                <?php
+
+
+                                                foreach (get_specific_table('college') as $row) {
+                                                    $section = $row['college_name']; ?>
+                                                    <option value="<?php echo $section ?>"><?php echo $section ?></option>
+
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                            <div class="form-text">Select a College</div>
                                     </div>
 
                                     <div class="form-outline mb-4">
@@ -122,24 +137,6 @@
 
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-md-6 mb-4">
-
-                                           <select name="state" id="" class="form-select form-select-lg">
-                                               <option value="1">1</option>
-                                           </select>
-                                           <div class="form-text">State</div>
-
-                                        </div>
-                                        <div class="col-md-6 mb-4">
-
-                                        <select name="city" id="" class="form-select form-select-lg">
-                                               <option value="1">1</option>
-                                           </select>
-                                           <div class="form-text">City</div>
-
-                                        </div>
-                                    </div>
 
 
 
@@ -155,10 +152,10 @@
                                     </div>
                                     <div class="form-outline mb-4">
                                     <select name="year_level" id="" class="form-select form-select-lg">
-                                            <option value="first_year">First Year</option>
-                                            <option value="second_year">Second Year</option>
-                                            <option value="third_year">Third Year</option>
-                                            <option value="fourth_year">Fourth Year</option>
+                                            <option value="FIRST YEAR">First Year</option>
+                                            <option value="SECOND YEAR ">Second Year</option>
+                                            <option value="THIRD YEAR">Third Year</option>
+                                            <option value="FOURTH YEAR">Fourth Year</option>
                                           
                                         </select>
                                         <div class="form-text">User type</div>
