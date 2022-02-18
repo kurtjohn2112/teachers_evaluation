@@ -153,7 +153,7 @@ function update_department($name,$desc,$id){
     $result = $conn->query($sql);
 
     if ($result == TRUE) {
-        header('location:department.php');
+        header('location:departments.php');
       
     } else {
        die("ERROR: ".$conn->error);
