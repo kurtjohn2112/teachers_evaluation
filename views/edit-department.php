@@ -39,7 +39,7 @@ $data = get_one_data('departments','department_id',$id);
                         $department_name = $_POST['dept_name'];
                         $dept_desc = $_POST['dept_desc'];
 
-                        update_college($department_name,$dept_desc,$id);
+                        update_department($department_name,$dept_desc,$id);
 
                       
 

@@ -147,13 +147,13 @@ function create_college($college_name,$collge_desc)
     }
 }
 
-function update_college($name,$desc,$id){
+function update_department($name,$desc,$id){
     $conn = connect_db();
     $sql ="UPDATE departments SET department_name = '$name', department_details = '$desc' WHERE department_id = '$id'";
     $result = $conn->query($sql);
 
     if ($result == TRUE) {
-        header('location:college.php');
+        header('location:department.php');
       
     } else {
        die("ERROR: ".$conn->error);
