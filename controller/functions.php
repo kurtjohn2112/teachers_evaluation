@@ -120,7 +120,8 @@ function delete_item($table_name,$pk_column,$primary_key){
     $sql = "DELETE FROM $table_name WHERE $pk_column = '$primary_key' ";
     $result = $conn->query($sql);
 
-    header('location:../views/college.php');
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
 
 }
 function get_one_data($table,$pk_column,$id){
@@ -133,10 +134,10 @@ function get_one_data($table,$pk_column,$id){
 
 }
 
-function create_college($college_name,$collge_desc)
+function create_department($college_name,$collge_desc,$college)
 {
     $conn = connect_db();
-    $sql = "INSERT INTO departments(department_name,department_details)VALUES('$college_name','$collge_desc')";
+    $sql = "INSERT INTO departments(department_name,department_details,department_college)VALUES('$college_name','$collge_desc','$college')";
     $result = $conn->query($sql);
 
     if ($result == TRUE) {
@@ -159,6 +160,160 @@ function update_department($name,$desc,$id){
        die("ERROR: ".$conn->error);
     }
 
+}
+
+function get_courses_department($department){
+    $conn = connect_db();
+    $department_name = strtoupper($department);
+    $sql = "SELECT * FROM courses WHERE department_name = '$department_name'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
+}
+function update_course($id, $name, $detail, $department){
+    $conn = connect_db();
+    $department = strtoupper($department);
+    $sql ="UPDATE courses SET course_name = '$name', course_detail = '$detail', department_name = '$department' WHERE course_id = '$id'";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('location:manage-courses.php?dep_name='.$department);
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
+}
+function create_course($name,$details,$department){
+    $conn = connect_db();
+    $sql = "INSERT INTO courses(course_name,course_detail,department_name)VALUES('$name','$details','$department')";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('Refresh:0');
+      
+    } else {
+       die("error ".$conn->error);
+    }
+
+}
+function create_college($name,$details){
+    $conn = connect_db();
+    $sql = "INSERT INTO college(college_name,college_detail)VALUES('$name','$details')";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('Refresh:0');
+      
+    } else {
+       die("error ".$conn->error);
+    }
+
+}
+function get_colleges_department($college){
+    $conn = connect_db();
+    $college = strtoupper($college);
+    $sql = "SELECT * FROM departments WHERE department_college = '$college'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
+}
+function update_college($id, $name, $detail){
+    $conn = connect_db();
+    $name = strtoupper($name);
+    $sql ="UPDATE college SET college_name = '$name', college_detail = '$detail' WHERE college_id = '$id'";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('location:manage-college.php');
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
+}
+
+function create_user($id,$name,$email,$college,$department,$role){
+    $conn = connect_db();
+    $sql = "INSERT INTO faculty_users(school_id, fullname, ctu_email, college, department,role) VALUES ('$id','$name','$email','$college','$department','$role')";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('Refresh: 0');
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
+}
+
+function get_user_group($role){
+    $conn = connect_db();
+    $role = strtoupper($role);
+    $sql = "SELECT * FROM faculty_users WHERE role = '$role'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
+}
+function update_user($school_id,$fullname,$ctu_email,$college,$department,$role,$id){
+    $conn = connect_db();
+    $role = strtoupper($role);
+    $sql ="UPDATE faculty_users SET school_id = '$school_id', fullname = '$fullname', ctu_email = '$ctu_email', college = '$college', department = '$department', role = '$role' WHERE id ='$id'";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('location:manage-faculties.php?user='.$role);
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
+}
+
+function get_class_course($course){
+    $conn = connect_db();
+    $course = strtoupper($course);
+    $sql = "SELECT * FROM classes WHERE course = '$course'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+    
+
+}
+function create_class($year,$section,$course){
+    $conn = connect_db();
+    $sql = "INSERT INTO classes(year,section,course) VALUES ('$year','$section','$course')";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('Refresh: 0');
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
 }
 
 

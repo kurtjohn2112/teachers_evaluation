@@ -24,27 +24,27 @@ include '../controller/functions.php';
                 <tbody>
                     <tr>
                         <td>Administrator</td>
-                        <td class="d-grid"><a href="#" class="btn btn-primary">View</a></td>                      
+                        <td class="d-grid"><a href="manage-faculties.php?user=ADMINISTRATOR" class="btn btn-primary">View</a></td>                      
                     </tr>
                     <tr>
                         <td>Students</td>
-                        <td class="d-grid"><a href="admin-manage-students.php" class="btn btn-primary">View</a></td>                      
+                        <td class="d-grid"><a href="manage-students.php" class="btn btn-primary">View</a></td>                      
                     </tr>
                     <tr>
                         <td>Faculties</td>
-                        <td class="d-grid"><a href="#" class="btn btn-primary">View</a></td>                      
+                        <td class="d-grid"><a href="manage-faculties.php?user=FACULTIES" class="btn btn-primary">View</a></td>                      
                     </tr>
                     <tr>
                         <td>Department Chair</td>
-                        <td class="d-grid"><a href="#" class="btn btn-primary">View</a></td>                      
+                        <td class="d-grid"><a href="manage-faculties.php?user=DEPARTMENT CHAIR" class="btn btn-primary">View</a></td>                      
                     </tr>
                     <tr>
                         <td>College Deans</td>
-                        <td class="d-grid"><a href="#" class="btn btn-primary">View</a></td>                      
+                        <td class="d-grid"><a href="manage-faculties.php?user=COLLEGE DEANS" class="btn btn-primary">View</a></td>                      
                     </tr>
                     <tr>
                         <td>Dean of Instructions</td>
-                        <td class="d-grid"><a href="#" class="btn btn-primary">View</a></td>                      
+                        <td class="d-grid"><a href="manage-faculties.php?user=DEAN OF INSTRUCTIONS" class="btn btn-primary">View</a></td>                      
                     </tr>
                 </tbody>
             </table>

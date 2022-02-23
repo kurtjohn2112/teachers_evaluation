@@ -1,11 +1,14 @@
-<?php include 'html/header.html'; 
-include '../controller/functions.php'; 
+<?php include 'html/header.html';
+include '../controller/functions.php';
+$college = $_GET['college_name'];
 
-if(isset($_POST['btn_submit'])){
-    $dept_name = $_POST['dept_name'];
+
+if (isset($_POST['btn_submit'])) {
+    $dept_name = strtoupper($_POST['dept_name']);
     $dept_desc = $_POST['dept_desc'];
+    $college = $_GET['college_name'];
 
-    create_college($dept_name,$dept_desc);
+    create_department($dept_name, $dept_desc,$college);
 }
 ?>
 
@@ -14,20 +17,21 @@ if(isset($_POST['btn_submit'])){
 </div>
 
 <div class="container justify-content-center bg-white p-5">
-    <p class="font-monospace">MANAGE COLLEGE</p>
+    <p class="font-monospace">MANAGE DEPARTMENT</p>
     <table class="table table-bordered">
-        <thead>
+        <thead class="table-dark">
             <td>Department Name</td>
             <td>Department Details</td>
-            <td colspan="2">Action</td>
+            <td colspan="3">Action</td>
         </thead>
 
-        <?php foreach(get_specific_table('departments') as $row ): ?>
+        <?php foreach (get_colleges_department($college) as $row) : ?>
             <tr>
                 <td><?php echo $row['department_name'] ?></td>
                 <td><?php echo $row['department_details'] ?></td>
                 <td><a href="edit-department.php?id=<?php echo $row['department_id'] ?>" class="btn btn-outline-secondary"> <i class="fa fa-pencil" aria-hidden="true"></i> </a></td>
                 <td><a href="../controller/delete.php?department_id=<?php echo $row['department_id'] ?>" class="btn btn-outline-danger"> <i class="fa fa-trash" aria-hidden="true"></i> </a></td>
+                <td><a href="manage-courses.php?dep_name=<?php echo $row['department_name'] ?>" class="btn btn-outline-secondary"> <i class="fas fa-search    "></i> </a></td>
             </tr>
 
         <?php endforeach ?>
@@ -40,16 +44,16 @@ if(isset($_POST['btn_submit'])){
         <div class="col-2 d-grid">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#modelId">
-              ADD A DEPARTMENT
+                ADD A DEPARTMENT
             </button>
-            
+
             <!-- Modal -->
             <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">New department</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form action="" method="post">
@@ -65,12 +69,18 @@ if(isset($_POST['btn_submit'])){
                                     </span>
                                     <input type="text" name="dept_desc" placeholder="Department Description" id="" class="form-control">
                                 </div>
+                                <div class="row">
+                                    <div class="col-12 mt-3">
+                                        
+                                    </div>
+                                </div>
                                 <div class="d-grid mt-3">
                                     <button type="submit" name="btn_submit" class="btn btn-outline-secondary">Save Department</button>
                                 </div>
                             </form>
-                            <?php 
-                              
+
+                            <?php
+
                             ?>
                         </div>
                         <div class="modal-footer">
@@ -80,7 +90,7 @@ if(isset($_POST['btn_submit'])){
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>

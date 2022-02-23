@@ -25,7 +25,7 @@ include 'html/header.html'; ?>
             <div class="card ">
                 <div class="card-body">
                     <p class="card-text text-center lead">
-                        NUMBER OF STUDENTS WHO EVALUATED
+                        TOTAL NUMBER OF FACULTIES
                     <p>
                         <i class="fa fa-user" aria-hidden="true"></i>
                         <span class="float-end">4</span>
@@ -33,7 +33,7 @@ include 'html/header.html'; ?>
                     </p>
                 </div>
                 <div class="card-footer">
-                    <a href="#" class="card-link text-decoration-none">View</a>
+                    <a href="admin-manage-students.php" class="card-link text-decoration-none">View</a>
                     <a href=""> <i class="fas fa-arrow-right float-end"></i> </a>
                 </div>
             </div>
@@ -51,7 +51,7 @@ include 'html/header.html'; ?>
                     </p>
                 </div>
                 <div class="card-footer">
-                    <a href="#" class="card-link text-decoration-none">View</a>
+                    <a href="" class="card-link text-decoration-none">View</a>
                     <a href=""> <i class="fas fa-arrow-right float-end"></i> </a>
                 </div>
             </div>

@@ -14,7 +14,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" href="departments.php">Departments <i class="fa fa-building float-end" aria-hidden="true"></i> </a>
+                        <a class="dropdown-item" href="manage-college.php">Colleges <i class="fa fa-building float-end" aria-hidden="true"></i> </a>
                         <a class="dropdown-item" href="#">Evaluation <i class="fas fa-sticky-note float-end "></i> </a>
                         <a class="dropdown-item" href="#">Reports <i class="fa fa-line-chart float-end" aria-hidden="true"></i> </a>
                         <a class="dropdown-item" href="admin-users.php">Users <i class="fa fa-user float-end" aria-hidden="true"></i></a>
