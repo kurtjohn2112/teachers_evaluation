@@ -61,7 +61,7 @@ if(isset($_POST['create_class'])){
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" name="create_class" class="btn btn-primary">Save</button>
-                    </form>
+                        </form>
                        <?php
                         
                        

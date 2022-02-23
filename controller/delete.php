@@ -21,5 +21,9 @@ if(isset($_GET['course_id']))
 }elseif(isset($_GET['subject_id'])){
     delete_item('subjects','subject_id',$_GET['subject_id']);
 
+
+}elseif(isset($_GET['evaluation_id'])){
+    delete_item('evaluations','id',$_GET['evaluation_id']);
+
 }
 ?>

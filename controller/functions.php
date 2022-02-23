@@ -344,6 +344,118 @@ function create_subjects($name,$desc,$id){
        die("ERROR: ".$conn->error);
     }
 }
+function create_evaluation($school_year,$semester){
+    $conn = connect_db();
+    $sql = "INSERT INTO evaluations(school_year,semester) VALUES ('$school_year','$semester')";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('Refresh: 0');
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
+}
+function change_eval_status($id,$status){
+    $conn = connect_db();
+    $sql ="UPDATE evaluations SET status = '$status'  WHERE id ='$id'";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('Refresh: 0');
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
+    
+
+}
+function update_evaluation($year,$semester,$id){
+    $conn = connect_db();
+    $sql ="UPDATE evaluations SET school_year = '$year', semester = '$semester' WHERE id = '$id'";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('location:manage-evaluation.php');
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
+
+}
+function get_eval_detail($id){
+    $conn = connect_db();
+    $sql ="SELECT * FROM evaluations WHERE id = '$id'";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+       return $result->fetch_assoc();
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
+
+}
+function get_criteria($id){
+    $conn = connect_db();
+    $sql ="SELECT * FROM criteria WHERE eval_id = '$id'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }else{
+        return FALSE;
+    }
+    
+}
+function create_criteria($name,$id){
+    $conn = connect_db();
+    $sql = "INSERT INTO criteria(eval_id,criteria_name) VALUES ('$id','$name')";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('Refresh: 0');
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
+
+}
+function create_question($question,$criteria,$eval_id){
+    $conn = connect_db();
+    $sql = "INSERT INTO questionaires(question,criteria,eval_id) VALUES ('$question','$criteria','$eval_id')";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('Refresh: 0');
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
+
+
+}
+
+function get_questions($eval_id){
+    $conn = connect_db();
+    $sql ="SELECT * FROM questionaires WHERE eval_id = '$eval_id'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }else{
+        return FALSE;
+    }
+
+}
 
 
 ?>
