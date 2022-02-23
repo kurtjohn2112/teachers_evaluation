@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Feb 23, 2022 at 07:55 AM
+-- Generation Time: Feb 23, 2022 at 09:10 AM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -41,14 +41,15 @@ CREATE TABLE `classes` (
 INSERT INTO `classes` (`class_id`, `year`, `section`, `course`) VALUES
 (1, '1', 'A', 'COM-SCI'),
 (2, '2', 'C', 'COM-SCI'),
-(3, '1', 'A', 'IT'),
 (4, '1', 'B', 'IT'),
 (5, '1', 'C', 'IT'),
 (6, '1', 'A', 'ELECTRICAL ENGINEERING'),
 (7, '1', 'B', 'ELECTRICAL ENGINEERING'),
 (8, '1', 'A', 'NURSING'),
 (9, '1', 'B', 'NURSING'),
-(10, '1', 'C', 'NURSING');
+(10, '1', 'C', 'NURSING'),
+(11, '1', 'A', 'BSIT'),
+(12, '1', 'B', 'BSIT');
 
 -- --------------------------------------------------------
 
@@ -93,8 +94,8 @@ INSERT INTO `courses` (`course_id`, `course_name`, `course_detail`, `department_
 (10, 'COM-SCI', 'computer science', 'SAMPLE'),
 (13, 'ELECTRICAL ENGINEERING', 'computer science', 'ENGINEERING DEPARTMENT'),
 (14, 'COM-SCI', 'computer science', 'ENGINEERING DEPARTMENT'),
-(15, 'ELECTRICAL ENGINEERING', '', 'IT DEPARTMENT'),
-(16, 'NURSING', '', 'NEW DEPARTMENT');
+(16, 'NURSING', '', 'NEW DEPARTMENT'),
+(18, 'BSIT', '', 'IT DEPARTMENT');
 
 -- --------------------------------------------------------
 
@@ -229,6 +230,30 @@ INSERT INTO `students_cred` (`student_id`, `fname`, `lname`, `department`, `sect
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `subjects`
+--
+
+CREATE TABLE `subjects` (
+  `subject_id` int(11) NOT NULL,
+  `sub_name` varchar(255) NOT NULL,
+  `sub_desc` varchar(255) NOT NULL,
+  `sub_class_id` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `subjects`
+--
+
+INSERT INTO `subjects` (`subject_id`, `sub_name`, `sub_desc`, `sub_class_id`) VALUES
+(1, 'ENGLISH 101', '', '6'),
+(2, 'FILIPINO 101', '', '6'),
+(3, 'ENGLISH 101', '', '11'),
+(4, 'FILIPINO 101', '', '11'),
+(5, 'MATH', '', '11');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `teachers_details`
 --
 
@@ -296,6 +321,12 @@ ALTER TABLE `students_cred`
   ADD PRIMARY KEY (`student_id`);
 
 --
+-- Indexes for table `subjects`
+--
+ALTER TABLE `subjects`
+  ADD PRIMARY KEY (`subject_id`);
+
+--
 -- Indexes for table `teachers_details`
 --
 ALTER TABLE `teachers_details`
@@ -309,7 +340,7 @@ ALTER TABLE `teachers_details`
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `college`
@@ -321,7 +352,7 @@ ALTER TABLE `college`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -352,6 +383,12 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `students_cred`
   MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `subjects`
+--
+ALTER TABLE `subjects`
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `teachers_details`

@@ -315,6 +315,35 @@ function create_class($year,$section,$course){
        die("ERROR: ".$conn->error);
     }
 }
+function get_class_subjects($id){
+    $conn = connect_db();
+    
+    $sql = "SELECT * FROM subjects WHERE sub_class_id = '$id'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }else{
+        return FALSE;
+    }
+
+}
+function create_subjects($name,$desc,$id){
+    $conn = connect_db();
+    $sql = "INSERT INTO subjects(sub_name,sub_desc,sub_class_id) VALUES ('$name','$desc','$id')";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('Refresh: 0');
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
+}
 
 
 ?>

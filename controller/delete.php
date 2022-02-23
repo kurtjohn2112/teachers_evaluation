@@ -13,5 +13,13 @@ if(isset($_GET['course_id']))
 }elseif(isset($_GET['user_id'])){
     delete_item('faculty_users','id',$_GET['user_id']);
 
+
+}elseif(isset($_GET['class_id'])){
+    delete_item('classes','class_id',$_GET['class_id']);
+
+
+}elseif(isset($_GET['subject_id'])){
+    delete_item('subjects','subject_id',$_GET['subject_id']);
+
 }
 ?>
