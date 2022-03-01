@@ -4,7 +4,7 @@ $id = $_GET['id'];
 $row = get_eval_detail($id);
 
 if(isset($_POST['save_criteria'])){
-    $name = $_POST['cri_name'];
+    $name = strtoupper($_POST['cri_name']) ;
 
     create_criteria($name,$id);
 }elseif(isset($_POST['edit_cri'])){

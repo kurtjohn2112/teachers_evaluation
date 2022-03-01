@@ -567,9 +567,9 @@ function get_evaluations($year,$section,$course){
 
 
 }
- function save_answers($student_id,$eval_id,$question_id,$score){
+ function save_answers($student_id,$eval_id,$question_id,$score,$criteria){
     $conn = connect_db();
-    $sql = "INSERT INTO answers(student_id,eval_id,question_id,score)VALUES('$student_id','$eval_id','$question_id','$score')";
+    $sql = "INSERT INTO answers(student_id,eval_id,question_id,score,criteria)VALUES('$student_id','$eval_id','$question_id','$score','$criteria')";
     $result = $conn->query($sql);
 
     if ($result == TRUE) {
@@ -592,6 +592,63 @@ function check_if_student_answered_question($student_id,$eval_id){
     }
 
 
+}
+
+function create_report($eval,$criteria){
+    $conn = connect_db();
+    $sql = "SELECT question_id FROM answers WHERE eval_id = '$eval' AND criteria = '$criteria' GROUP BY question_id";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }else{
+        return FALSE;
+    }
+}
+function count_student_who_answered($eval_id){
+    $conn = connect_db();
+    $sql = "SELECT student_id FROM answers WHERE eval_id = '$eval_id' GROUP BY student_id";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+       return $result->num_rows;
+    }else{
+        return FALSE;
+    }
+
+}
+
+function total_student_count($question_id){
+    $conn = connect_db();
+    $sql = "SELECT * FROM answers WHERE question_id = '$question_id' ";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+       return $result->num_rows;
+       
+
+     }else{
+         return 0;
+     }
+}
+function count_student_number($question_id,$score,$criteria){
+    $conn = connect_db();
+    $sql = "SELECT COUNT(score) as count FROM answers WHERE question_id = '$question_id' AND score = '$score' AND criteria = '$criteria'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+      $row = $result->fetch_assoc();
+
+      return $row['count'] * $score;
+       
+
+     }else{
+         return 0;
+     }
 }
 
 

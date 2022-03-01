@@ -16,6 +16,8 @@
             <p class="lead">SEMESTER: <span class="text-muted"><?php echo $row['semester'] ?></span></p>
             <p class="lead">CLASS: <span class="text-muted"><?php echo $row['year']."-".$row['section']." ".$row['course'] ?></span></p>
             <p class="lead">TEACHER: <span class="text-muted"><?php echo $teacher['fname']." ".$teacher['lname'] ?></span></p>
+
+            <a href="view-report.php?eval_id=<?php echo $row['id'] ?>" class="btn btn-outline-primary float-end">View Report</a>
         </div>
     <?php endforeach ?>
 </div>

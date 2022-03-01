@@ -10,10 +10,11 @@ $questions = get_questions($_GET['eval_id']);
 if(isset($_POST['save_answer'])){
     $q_id = $_POST['quest_id'];
     $answers = $_POST['grade'];
+    $criteria = $_POST['criteria'];
     $count = count($answers);
 
     for($x=0; $x < $count; $x++){
-        save_answers($_SESSION['id'],$_GET['eval_id'],$q_id,$answers[$x]);
+        save_answers($_SESSION['id'],$_GET['eval_id'],$q_id[$x],$answers[$x],$criteria[$x]);
     }
 
 
@@ -38,7 +39,8 @@ if(isset($_POST['save_answer'])){
                 <?php foreach ($questions as $row) : ?>
                     <div class="border border-1 p-5 mb-4">
                         <p class="lead"><?php echo $row['question'] ?></p>
-                        <input type="hidden" name="quest_id" value="<?php echo $row['quest_id'] ?>">
+                        <input type="hidden" name="quest_id[]" value="<?php echo $row['quest_id'] ?>">
+                        <input type="hidden" name="criteria[]" value="<?php echo $row['criteria'] ?>">
                         <select name="grade[]" id="" class="form-select w-25 mx-auto">
                             <option value="1">1</option>
                             <option value="2">2</option>

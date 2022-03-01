@@ -4,7 +4,7 @@
     <div class="collapse navbar-collapse" id="collapsibleNavId">
         <ul class="navbar-nav me-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="admin.php">STUDENTS RATING SYSTEM FOR TEACHERS <span class="visually-hidden">(current)</span></a>
+                <a class="nav-link" href="admin.php"><img src="../images/CTU.png" alt="" height="50" width="50" srcset=""></a>
             </li>
 
         </ul>

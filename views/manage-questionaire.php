@@ -4,7 +4,7 @@ $eval_id = $_GET['id'];
 
 if (isset($_POST['create_criteria'])) {
     $question = $_POST['question'];
-    $cri = $_POST['criteria'];
+    $cri = strtoupper($_POST['criteria']) ;
 
     create_question($question, $cri, $eval_id);
 } elseif (isset($_POST['edit_question'])) {
