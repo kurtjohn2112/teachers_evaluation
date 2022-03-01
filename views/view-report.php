@@ -24,7 +24,7 @@ function solve($r1,$r2,$r3,$r4,$r5){
             background-position:center ">
 
         </div>
-        <div class="container border border-5" style="width:70%">
+        <div class="container" style="width:70%">
             <h1 class="h4 text-center p-5">
                 STUDENT'S RATING SYSTEM FOR TEACHERS <br>
                 <span class="text-muted fs-5">Academic Year: (<?php echo $eval['school_year'] ?>) Semester: (<?php echo $eval['semester'] ?>) </span>
