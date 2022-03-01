@@ -24,6 +24,12 @@ if(isset($_GET['course_id']))
 
 }elseif(isset($_GET['evaluation_id'])){
     delete_item('evaluations','id',$_GET['evaluation_id']);
+    
+}elseif(isset($_GET['cri_id'])){
+   
+    delete_item('criteria','id',$_GET['cri_id']);
+}elseif(isset($_GET['ques_id'])){
 
+    delete_item('questionaires','quest_id',$_GET['ques_id']);
 }
 ?>

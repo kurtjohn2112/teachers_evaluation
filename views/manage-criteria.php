@@ -7,6 +7,11 @@ if(isset($_POST['save_criteria'])){
     $name = $_POST['cri_name'];
 
     create_criteria($name,$id);
+}elseif(isset($_POST['edit_cri'])){
+    $name = $_POST['cri_name'];
+    $id = $_POST['cri_id'];
+
+    edit_criteria($id,$name);
 }
 
 
@@ -48,7 +53,39 @@ if(isset($_POST['save_criteria'])){
             <div class="list-group">
                 <?php foreach(get_criteria($id) as $row): ?>
                    
-                        <a href="#" class="list-group-item list-group-item-action"><?php echo $row['criteria_name'] ?></a>
+                    <li class="list-group-item list-group-item-action"><?php echo $row['criteria_name']; ?>  
+                        <a href="../controller/delete.php?cri_id=<?php echo $row['id'] ?>" class="float-end badge bg-danger mx-2">DELETE</a>
+                        <a href="#" class="float-end badge bg-secondary" data-bs-toggle="modal" data-bs-target="#modelId_<?php echo $row['id'] ?>" >EDIT</a>
+                    </li>
+
+                    <!-- Button trigger modal -->
+                    
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="modelId_<?php echo $row['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Modal title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                   <?php $cri_id =  $row['id']  ?>
+                                    <form action="" method="post">
+                                        <input type="text" name="cri_name" placeholder="Criteria Name" value="<?php echo $row['criteria_name']
+                                         ?>" id="" class="form-control">
+                                        <input type="hidden" value="<?php echo $row['id'] ?>" name="cri_id" id="" class="form-control">
+                                   
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" name="edit_cri" class="btn btn-primary">Save</button>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                         
                    
                 <?php endforeach; ?>  

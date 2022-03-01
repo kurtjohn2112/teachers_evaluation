@@ -15,6 +15,9 @@ function login($email, $password)
         $_SESSION['id'] = $rows['student_id'];
         $_SESSION['fname'] = $rows['fname'];
         $_SESSION['lname'] = $rows['lname'];
+        $_SESSION['section'] = $rows['section'];
+        $_SESSION['course'] = $rows['course'];
+        $_SESSION['level'] = $rows['year_level'];
 
         return TRUE;
     } else {
@@ -456,6 +459,141 @@ function get_questions($eval_id){
     }
 
 }
+
+function edit_criteria($cri_id,$cri_name){
+    $conn = connect_db();
+    $sql ="UPDATE criteria SET criteria_name = '$cri_name' WHERE id = '$cri_id'";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('Refresh: 0');
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
+
+}
+function edit_question($quest_id,$question){
+    $conn = connect_db();
+    $sql ="UPDATE questionaires SET question = '$question' WHERE quest_id = '$quest_id'";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('Refresh: 0');
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
+
+}
+
+ function get_section(){
+    $conn = connect_db();
+    $sql ="SELECT section FROM classes GROUP BY section";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }else{
+        return FALSE;
+    }
+
+}
+ function get_courses(){
+    $conn = connect_db();
+    $sql ="SELECT course_name FROM courses GROUP BY course_name";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }else{
+        return FALSE;
+    }
+
+}
+
+function create_teacher($fname,$lname,$department,$username,$password){
+    $conn = connect_db();
+    $sql = "INSERT INTO teachers(fname,lname,department,username,password)VALUES('$fname','$lname','$department','$username','$password')";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('Refresh: 0');
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
+
+
+}
+
+function save_restrictions($eval_id,$teacher_id,$year,$section,$course){
+    $conn = connect_db();
+    $sql = "UPDATE evaluations SET year = '$year', section = '$section', course = '$course', teacher_id = '$teacher_id' WHERE id ='$eval_id'";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('location: messages/eval_complete.php');
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
+
+
+}
+
+function get_evaluations($year,$section,$course){
+    $conn = connect_db();
+    $sql = "SELECT * FROM evaluations WHERE year = '$year' AND section = '$section' AND course = '$course'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }else{
+        return FALSE;
+    }
+
+
+}
+ function save_answers($student_id,$eval_id,$question_id,$score){
+    $conn = connect_db();
+    $sql = "INSERT INTO answers(student_id,eval_id,question_id,score)VALUES('$student_id','$eval_id','$question_id','$score')";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('location: messages/answer-completed.php');
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
+
+}
+function check_if_student_answered_question($student_id,$eval_id){
+    $conn = connect_db();
+    $sql = "SELECT * FROM answers WHERE student_id = '$student_id' AND eval_id = '$eval_id'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        return "ANSWERED";
+    }else{
+        return FALSE;
+    }
+
+
+}
+
 
 
 ?>

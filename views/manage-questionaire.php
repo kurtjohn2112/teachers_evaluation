@@ -7,6 +7,11 @@ if (isset($_POST['create_criteria'])) {
     $cri = $_POST['criteria'];
 
     create_question($question, $cri, $eval_id);
+} elseif (isset($_POST['edit_question'])) {
+    $question = $_POST['question'];
+    $id = $_POST['quest_id'];
+
+    edit_question($id, $question);
 }
 
 
@@ -69,12 +74,45 @@ if (isset($_POST['create_criteria'])) {
         <?php foreach (get_questions($eval_id) as $row) : ?>
 
             <div class="border mt-3 p-3">
-                <p class="lead"><?php echo $row['question'] ?><span class="badge bg-success float-end"><?php echo $row['criteria'] ?></span></p> 
+                <p class="lead"><?php echo $row['question'] ?><span class="badge bg-success float-end"><?php echo $row['criteria'] ?></span></p>
+                <a href="../controller/delete.php?ques_id=<?php echo $row['quest_id'] ?>" class="badge bg-danger text-decoration-none">DELETE</a>
+                <!-- Button trigger modal -->
+                <a href="#" class="badge bg-secondary text-decoration-none" data-bs-toggle="modal" data-bs-target="#modelId_<?php echo $row['quest_id'] ?>">
+                    EDIT
+                </a>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modelId_<?php echo $row['quest_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" method="post">
+                                    <input type="text" name="question" placeholder="QUESTION" value="<?php echo $row['question'] ?>" id="" class="form-control">
+                                    <input type="hidden" value="<?php echo $row['quest_id'] ?>" name="quest_id" id="" class="form-control">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" name="edit_question" class="btn btn-primary">Save</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         <?php endforeach; ?>
 
     <?php } ?>
+
+    <div class="text-end">
+        <a href="manage-restrictions.php?eval_id=<?php echo $eval_id ?>" class="btn btn-outline-info mt-5">SET UP RESTRICTIONS</a>
+    </div>
 
 </div>
 

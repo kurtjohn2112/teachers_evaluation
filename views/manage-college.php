@@ -67,8 +67,8 @@ if(isset($_POST['create_college'])){
     <p class="font-monospace mt-5">MANAGE COLLEGE</p>
     <table class="table table-bordered">
         <thead class="table-dark">
-            <td>Course Name</td>
-            <td>Course Details</td>
+            <td>College Name</td>
+            <td>College Details</td>
             <td colspan="3">Action</td>
         </thead>
 

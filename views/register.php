@@ -55,7 +55,7 @@
 
                                                     foreach (get_specific_table('courses') as $row) {
                                                         $course = $row['course_name']; ?>
-                                                        <option value="<?php $course ?>"><?php echo $course ?></option>
+                                                        <option value="<?php echo $course ?>"><?php echo $course ?></option>
 
                                                     <?php
                                                     }
@@ -82,18 +82,11 @@
                                     </div>
                                     <div class="form-outline mb-4">
                                              <select name="class_section" class="form-select form-select-lg" id="">
-                                                <?php
-
-
-                                                foreach (get_specific_table('classes') as $row) {
-                                                    $section = $row['class_name']; ?>
-                                                    <option value="<?php echo $section ?>"><?php echo $course ?></option>
-
-                                                <?php
-                                                }
-                                                ?>
+                                                <?php foreach(get_section() as $row): ?>
+                                                    <option value="<?php echo strtoupper($row['section']) ?>"><?php echo strtoupper($row['section']) ?></option>
+                                                <?php endforeach ?>
                                             </select>
-                                            <div class="form-text">Select a class section</div>
+                                            <div class="form-text">Select a year</div>
                                     </div>
                                     <div class="form-outline mb-4">
                                              <select name="college" class="form-select form-select-lg" id="">
@@ -152,10 +145,10 @@
                                     </div>
                                     <div class="form-outline mb-4">
                                     <select name="year_level" id="" class="form-select form-select-lg">
-                                            <option value="FIRST YEAR">First Year</option>
-                                            <option value="SECOND YEAR ">Second Year</option>
-                                            <option value="THIRD YEAR">Third Year</option>
-                                            <option value="FOURTH YEAR">Fourth Year</option>
+                                            <option value="1">First Year</option>
+                                            <option value="2">Second Year</option>
+                                            <option value="3">Third Year</option>
+                                            <option value="4">Fourth Year</option>
                                           
                                         </select>
                                         <div class="form-text">User type</div>
