@@ -9,7 +9,7 @@ $eval = get_evaluations($_SESSION['level'], $_SESSION['section'], $_SESSION['cou
 ?>
 
 <div class="container">
-    <div class="row mt-3">
+    <div class="row my-5">
         <?php include 'navbar-students.php'; ?>
 
     </div>
@@ -20,7 +20,7 @@ $eval = get_evaluations($_SESSION['level'], $_SESSION['section'], $_SESSION['cou
 <div class="container">
     <div class="row">
         <!-- Main content -->
-        <div class="col-lg-9 mb-3">
+        <div class="col-lg-12 mb-3">
             <div class="row text-left mb-5">
                 <div class="col-lg-6 mb-3 mb-sm-0">
                     <div class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50" style="width: 100%;">
@@ -117,7 +117,7 @@ $eval = get_evaluations($_SESSION['level'], $_SESSION['section'], $_SESSION['cou
 
         </div>
         <!-- Sidebar content -->
-        <div class="col-lg-3 mb-4 mb-lg-0 px-lg-0 mt-lg-0">
+        <!-- <div class="col-lg-3 mb-4 mb-lg-0 px-lg-0 mt-lg-0">
             <div style="visibility: hidden; display: none; width: 285px; height: 801px; margin: 0px; float: none; position: static; inset: 85px auto auto;"></div>
             <div data-settings="{&quot;parent&quot;:&quot;#content&quot;,&quot;mind&quot;:&quot;#header&quot;,&quot;top&quot;:10,&quot;breakpoint&quot;:992}" data-toggle="sticky" class="sticky" style="top: 85px;">
                 <div class="sticky-inner">
@@ -174,7 +174,7 @@ $eval = get_evaluations($_SESSION['level'], $_SESSION['section'], $_SESSION['cou
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <?php
 include './html/footer.html';

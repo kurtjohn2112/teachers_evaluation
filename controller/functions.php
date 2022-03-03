@@ -1,7 +1,7 @@
 <?php
 
 include '../model/connection.php';
-session_start();
+
 
 function login($email, $password)
 {
@@ -648,6 +648,24 @@ function count_student_number($question_id,$score,$criteria){
 
      }else{
          return 0;
+     }
+}
+
+function login_admins($username,$password){
+    $conn = connect_db();
+    $sql = "SELECT * FROM faculty_users WHERE ctu_email = '$username' AND school_id = '$password'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+
+        $_SESSION['fullname'] = $row['fullname'];
+        $_SESSION['role'] = $row['role'];
+        
+        header('location: admin.php');
+
+     }else{
+        echo "<div class = 'alert alert-danger mt-5'>INVALID CREDENTIALS</div>";
      }
 }
 

@@ -1,4 +1,7 @@
 <?php 
+
+
+session_start();
     // function connect_db(){
 
 

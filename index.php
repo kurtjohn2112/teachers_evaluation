@@ -2,6 +2,7 @@
 
  <?php include 'views/html/header.html'; ?>
  <div class="form-bg">
+     <a href="views/index.php" class="float-end btn btn-outline-info m-5">ADMIN LOGIN <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> </a>
      <div class="container">
          <div class="row">
              <div class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6 mx-auto mt-5">
