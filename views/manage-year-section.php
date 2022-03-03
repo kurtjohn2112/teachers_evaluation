@@ -86,7 +86,7 @@ if(isset($_POST['create_class'])){
                 <td><a href="edit-courses.php?id=<?php echo $row['class_id'] ?>" class="btn btn-outline-secondary"> <i class="fa fa-pencil" aria-hidden="true"></i> </a></td>
                 <td><a href="../controller/delete.php?class_id=<?php echo $row['class_id'] ?>" class="btn btn-outline-danger"> <i class="fa fa-trash" aria-hidden="true"></i> </a></td>
                 <td>
-                    <a href="manage-section-subjects.php?class_id=<?php echo $row['class_id']  ?>" class="btn btn-outline-info"> <i class="fa fa-search" aria-hidden="true"></i> </a>
+                    <a href="manage-section-subjects.php?class_id=<?php echo $row['class_id']  ?>" class="btn btn-outline-info"> <i class="fa fa-eye" aria-hidden="true"></i> </a>
                 </td>
              
             </tr>

@@ -82,7 +82,7 @@ if(isset($_POST['create_course'])){
                 <td><?php echo $row['course_detail'] ?></td>
                 <td><a href="edit-courses.php?id=<?php echo $row['course_id'] ?>" class="btn btn-outline-secondary"> <i class="fa fa-pencil" aria-hidden="true"></i> </a></td>
                 <td><a href="../controller/delete.php?course_id=<?php echo $row['course_id'] ?>" class="btn btn-outline-danger"> <i class="fa fa-trash" aria-hidden="true"></i> </a></td>
-                <td><a href="manage-year-section.php?course_name=<?php echo $row['course_name'] ?>" class="btn btn-outline-secondary"> <i class="fas fa-search    "></i> </a></td>
+                <td><a href="manage-year-section.php?course_name=<?php echo $row['course_name'] ?>" class="btn btn-outline-secondary"> <i class="fa fa-eye" aria-hidden="true"></i> </a></td>
             </tr>
 
         <?php endforeach ?>

@@ -17,7 +17,7 @@ session_start();
     // }
     function connect_db(){
 
-        // hosting credentials, do not touch this or enable this
+    //     // hosting credentials, do not touch this or enable this
 
         $conn = new mysqli(
                             'us-cdbr-east-05.cleardb.net',

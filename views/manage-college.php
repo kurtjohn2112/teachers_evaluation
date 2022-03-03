@@ -78,7 +78,7 @@ if(isset($_POST['create_college'])){
                 <td><?php echo $row['college_detail'] ?></td>
                 <td><a href="edit-college.php?id=<?php echo $row['college_id'] ?>" class="btn btn-outline-secondary"> <i class="fa fa-pencil" aria-hidden="true"></i> </a></td>
                 <td><a href="../controller/delete.php?college_id=<?php echo $row['college_id'] ?>" class="btn btn-outline-danger"> <i class="fa fa-trash" aria-hidden="true"></i> </a></td>
-                <td><a href="manage-departments.php?college_name=<?php echo $row['college_name'] ?>" class="btn btn-outline-secondary"> <i class="fas fa-search    "></i> </a></td>
+                <td><a href="manage-departments.php?college_name=<?php echo $row['college_name'] ?>" class="btn btn-outline-secondary"> <i class="fa fa-eye" aria-hidden="true"></i> </a></td>
             </tr>
 
         <?php endforeach ?>

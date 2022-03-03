@@ -31,7 +31,7 @@ if (isset($_POST['btn_submit'])) {
                 <td><?php echo $row['department_details'] ?></td>
                 <td><a href="edit-department.php?id=<?php echo $row['department_id'] ?>" class="btn btn-outline-secondary"> <i class="fa fa-pencil" aria-hidden="true"></i> </a></td>
                 <td><a href="../controller/delete.php?department_id=<?php echo $row['department_id'] ?>" class="btn btn-outline-danger"> <i class="fa fa-trash" aria-hidden="true"></i> </a></td>
-                <td><a href="manage-courses.php?dep_name=<?php echo $row['department_name'] ?>" class="btn btn-outline-secondary"> <i class="fas fa-search    "></i> </a></td>
+                <td><a href="manage-courses.php?dep_name=<?php echo $row['department_name'] ?>" class="btn btn-outline-secondary"> <i class="fa fa-eye" aria-hidden="true"></i> </a></td>
             </tr>
 
         <?php endforeach ?>
