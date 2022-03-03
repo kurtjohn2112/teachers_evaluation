@@ -19,11 +19,12 @@
                         <a class="dropdown-item" href="manage-reports.php">Reports <i class="fa fa-line-chart float-end" aria-hidden="true"></i> </a>
                         <a class="dropdown-item" href="admin-users.php">Users <i class="fa fa-user float-end" aria-hidden="true"></i></a>
                         <a class="dropdown-item" href="#">Rankings <i class="fas fa-crown float-end   "></i></a>
+                        <a class="dropdown-item" href="manage-teachers.php">Add teacher <i class="fa fa-line-chart float-end" aria-hidden="true"></i> </a>
                         <a class="dropdown-item" href="logout.php?admin">Logout <i class="fas fa-door-open float-end   "></i></a>
+
                     </div>
                 </li>
                 <li class="nav-item">
-                    <!-- <a class="nav-link" href="#">Active Reports <i class="fa fa-line-chart" aria-hidden="true"></i> </a> -->
                 </li>
             </ul>
         </form>

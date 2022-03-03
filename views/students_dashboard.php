@@ -3,7 +3,10 @@ include '../controller/functions.php';
 include './html/header.html';
 
 
+// print_r($_SESSION);
 $eval = get_evaluations($_SESSION['level'], $_SESSION['section'], $_SESSION['course']);
+
+// print_r($eval);
 
 
 ?>

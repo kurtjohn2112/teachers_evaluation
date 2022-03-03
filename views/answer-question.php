@@ -19,6 +19,13 @@ if(isset($_POST['save_answer'])){
 
 
 
+}elseif(isset($_POST['post'])){
+    $comment = $_POST['comment'];
+    $student_id = $_POST['student_id'];
+    $eval_id = $_POST['eval_id'];
+
+    add_comment($eval_id,$student_id,$comment);
+
 }
 
 
@@ -65,7 +72,7 @@ if(isset($_POST['save_answer'])){
                     <a class="btn btn-lg btn-block btn-success rounded-0 py-4 mb-3 bg-op-6 roboto-bold" href="#">Ask Question</a>
                     <div class="bg-white mb-3">
                         <h4 class="px-3 py-4 op-5 m-0">
-                            Active Topics
+                            Comments:
                         </h4>
                         <hr class="m-0">
                         <div class="pos-relative px-3 py-3">
@@ -74,45 +81,15 @@ if(isset($_POST['save_answer'])){
                             </h6>
                             <p class="mb-0 text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">39 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">AppStrapMaster</a></p>
                         </div>
-                        <hr class="m-0">
-                        <div class="pos-relative px-3 py-3">
-                            <h6 class="text-primary text-sm">
-                                <a href="#" class="text-primary">Custom shortcut or command to launch command in terminal? </a>
-                            </h6>
-                            <p class="mb-0 text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">58 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">DanielD</a></p>
-                        </div>
-                        <hr class="m-0">
-                        <div class="pos-relative px-3 py-3">
-                            <h6 class="text-primary text-sm">
-                                <a href="#" class="text-primary">HELP! My Windows XP machine is down </a>
-                            </h6>
-                            <p class="mb-0 text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">48 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">DanielD</a></p>
-                        </div>
-                        <hr class="m-0">
-                        <div class="pos-relative px-3 py-3">
-                            <h6 class="text-primary text-sm">
-                                <a href="#" class="text-primary">HELP! My Windows XP machine is down </a>
-                            </h6>
-                            <p class="mb-0 text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">38 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">DanielD</a></p>
-                        </div>
-                        <hr class="m-0">
-                    </div>
-                    <div class="bg-white text-sm">
-                        <h4 class="px-3 py-4 op-5 m-0 roboto-bold">
-                            Stats
-                        </h4>
-                        <hr class="my-0">
-                        <div class="row text-center d-flex flex-row op-7 mx-0">
-                            <div class="col-sm-6 flex-ew text-center py-3 border-bottom border-right"> <a class="d-block lead font-weight-bold" href="#">58</a> Topics </div>
-                            <div class="col-sm-6 col flex-ew text-center py-3 border-bottom mx-0"> <a class="d-block lead font-weight-bold" href="#">1.856</a> Posts </div>
-                        </div>
-                        <div class="row d-flex flex-row op-7">
-                            <div class="col-sm-6 flex-ew text-center py-3 border-right mx-0"> <a class="d-block lead font-weight-bold" href="#">300</a> Members </div>
-                            <div class="col-sm-6 flex-ew text-center py-3 mx-0"> <a class="d-block lead font-weight-bold" href="#">DanielD</a> Newest Member </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                       <form action="" method="post" class="mt-5">
+                           <div class="input-group">
+                               <input type="text" name="comment" placeholder="Comments" id="" class="form-control" required>
+                               <input type="hidden" name="student_id" value="<?php echo $_SESSION['id'] ?>">
+                               <input type="hidden" name="eval_id" value="<?php echo $_GET['eval_id'] ?>">
+                               <button type="submit" name="post" class="btn btn-info">Post Comment</button>
+                           </div>
+                       </form>
+            <!-- -------------- -->
         </div>
     </div>
 </div>

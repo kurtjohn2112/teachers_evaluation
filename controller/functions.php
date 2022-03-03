@@ -661,8 +661,10 @@ function login_admins($username,$password){
 
         $_SESSION['fullname'] = $row['fullname'];
         $_SESSION['role'] = $row['role'];
+
+    
         
-        header('location: admin.php');
+        header('location: manage-reports.php');
 
      }else{
         echo "<div class = 'alert alert-danger mt-5'>INVALID CREDENTIALS</div>";
@@ -671,7 +673,7 @@ function login_admins($username,$password){
 
 function update_student($id,$fname,$lname,$course,$department,$section,$college,$status,$address,$gender,$year_level){
     $conn = connect_db();
-    $sql = "UPDATE students_cred SET fname = '$fname',lname = '$lname',department = '$department',section='$section',college='$college',address = '$address',gender='$gender',course='$course',status='$status',year_level='$year_level' WHERE student_id = '$id'";
+    $sql = "UPDATE students_cred SET fname='$fname',lname='$lname',department='$department',section='$section',college='$college',address='$address',gender='$gender',course='$course',status='$status',year_level='$year_level' WHERE student_id='$id'";
     $result = $conn->query($sql);
 
     if ($result == TRUE) {
@@ -696,6 +698,38 @@ function count_students_who_submitted(){
      }else{
          return 0;
      }
+}
+
+function add_comment($eval_id,$student_id,$comment){
+    $conn = connect_db();
+    $sql = "INSERT INTO comments(eval_id,student_id,content)VALUES('$eval_id','$student_id','$comment')";
+
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+        header('Refresh: 0');
+      
+    } else {
+       die("ERROR: ".$conn->error);
+    }
+    
+}
+
+function get_comments($eval_id){
+    $conn = connect_db();
+    $sql = "SELECT * FROM comments WHERE eval_id = '$eval_id' ";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }else{
+        return FALSE;
+    }
+
 }
 
 

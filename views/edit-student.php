@@ -9,7 +9,7 @@ if (isset($_POST['update_student'])) {
     
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
-    $course = $_POST['course'];
+    $course = $_POST['courses'];
     $department = $_POST['department'];
     $section = $_POST['class_section'];
     $college = $_POST['college'];
@@ -18,7 +18,9 @@ if (isset($_POST['update_student'])) {
     $gender = $data['gender'];
     $year_level = $_POST['year_level'];
 
-    update_student($user_id,$fname,$lname,$college,$department,$section,$college,$status,$address,$gender,$year_level);
+    // print_r($_POST);
+
+    update_student($user_id,$fname,$lname,$course,$department,$section,$college,$status,$address,$gender,$year_level);
     
 }
 
@@ -46,7 +48,7 @@ if (isset($_POST['update_student'])) {
                         <span class="input-group-text">
                             <i class="fas fa-sticky-note"></i>
                         </span>
-                        <select name="course" class="form-select" id="">
+                        <select name="courses" class="form-select" id="">
                             <option value="" selected disabled hidden>SELECT WHICH COURSE IT BELONGS</option>
                             <?php foreach (get_specific_table('courses') as $row) : ?>
                                 <option value="<?php echo strtoupper($row['course_name']) ?>"><?php echo $row['course_name'] ?></option>
