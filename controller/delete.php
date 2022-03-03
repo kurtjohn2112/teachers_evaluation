@@ -31,5 +31,8 @@ if(isset($_GET['course_id']))
 }elseif(isset($_GET['ques_id'])){
 
     delete_item('questionaires','quest_id',$_GET['ques_id']);
+}elseif(isset($_GET['student_id'])){
+    delete_item('students_cred','student_id',$_GET['student_id']);
+
 }
 ?>

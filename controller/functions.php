@@ -669,6 +669,35 @@ function login_admins($username,$password){
      }
 }
 
+function update_student($id,$fname,$lname,$course,$department,$section,$college,$status,$address,$gender,$year_level){
+    $conn = connect_db();
+    $sql = "UPDATE students_cred SET fname = '$fname',lname = '$lname',department = '$department',section='$section',college='$college',address = '$address',gender='$gender',course='$course',status='$status',year_level='$year_level' WHERE student_id = '$id'";
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+     
+       header('location: manage-students.php');
+     }else{
+         die('ERROR: '.$conn->error);
+     }
+
+}
+
+function count_students_who_submitted(){
+    $conn = connect_db();
+    $sql = "SELECT student_id FROM answers GROUP BY student_id";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+      return  $result->num_rows;
+
+      
+
+     }else{
+         return 0;
+     }
+}
+
 
 
 ?>

@@ -21,7 +21,7 @@ include 'html/header.html';
                     <input type="password" name="password" placeholder="School ID" id="" class="form-control">
 
                 </div>
-                <button type="submit" name="login" class="btn btn-outline-success mt-3 float-end w-25">Login</button>
+                <button type="submit" name="login" class="btn btn-outline-success mt-3  w-25 mt-3">Login</button>
 
             </div>
             <div class="card-footer">

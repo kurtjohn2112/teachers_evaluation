@@ -1,5 +1,7 @@
 <?php
-include 'html/header.html'; ?>
+include 'html/header.html';
+include '../controller/functions.php';
+?>
 
 
 <div class="container-fluid my-3 bg-light">
@@ -12,7 +14,10 @@ include 'html/header.html'; ?>
                 <div class="card-body">
                     <p class="card-text text-center lead">
                         NUMBER OF STUDENTS WHO EVALUATED
-                    <p><i class="fa fa-star" aria-hidden="true"></i></p>
+                    <p><i class="fa fa-star" aria-hidden="true"></i>
+                        <span class="float-end"><?php echo count_students_who_submitted() ?> </span>
+                    </p>
+                    
                     </p>
                 </div>
                 <div class="card-footer">
@@ -28,7 +33,7 @@ include 'html/header.html'; ?>
                         TOTAL NUMBER OF FACULTIES
                     <p>
                         <i class="fa fa-user" aria-hidden="true"></i>
-                        <span class="float-end">4</span>
+                        <span class="float-end"> <?php echo count(get_specific_table('faculty_users')) ?> </span>
                     </p>
                     </p>
                 </div>
@@ -45,8 +50,8 @@ include 'html/header.html'; ?>
                         TOTAL NUMBER OF STUDENTS
                     <p>
                         <i class="fa fa-users" aria-hidden="true"></i>
-                        <span class="float-end">4</span>
-                        <span class="float-end">4</span>
+                        <span class="float-end"><?php echo count(get_specific_table('students_cred')) ?></span>
+                        
                     </p>
                     </p>
                 </div>
