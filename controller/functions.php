@@ -664,7 +664,7 @@ function login_admins($username,$password){
 
     
         
-        header('location: manage-reports.php');
+        header('location: admin.php');
 
      }else{
         echo "<div class = 'alert alert-danger mt-5'>INVALID CREDENTIALS</div>";
