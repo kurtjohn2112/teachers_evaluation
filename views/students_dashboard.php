@@ -6,7 +6,6 @@ include './html/header.html';
 // print_r($_SESSION);
 $eval = get_evaluations($_SESSION['level'], $_SESSION['section'], $_SESSION['course']);
 
-// print_r($eval);
 
 
 ?>
@@ -71,6 +70,7 @@ $eval = get_evaluations($_SESSION['level'], $_SESSION['section'], $_SESSION['cou
                                     <h5>
                                         <a href="#" class="text-primary"><?php
                                             $data = get_one_data('teachers','teacher_id',$row['teacher_id']);
+                                           
 
                                             echo strtoupper($data['fname'])." ".strtoupper($data['lname']);
                                         ?></a>

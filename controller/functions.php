@@ -732,6 +732,63 @@ function get_comments($eval_id){
 
 }
 
+function upload_img($name){
+    $conn = connect_db();
+    $sql = "INSERT INTO images(name)VALUES('$name')";
+    $result = $conn->query($sql);
+
+    if($result == TRUE){
+      return 1;
+      
+    }else{
+        die('ERROR: '.$conn->error);
+    }
+
+}
+
+ function show_img(){
+    $conn = connect_db();
+    $sql = "SELECT * FROM images ORDER BY id DESC";
+    $result = $conn->query($sql);
+
+    if($result == TRUE){
+      return $result->fetch_assoc();
+      
+    }else{
+        die('ERROR: '.$conn->error);
+    }
+
+}
+
+function get_total_score($id){
+    $conn = connect_db();
+    $sql = "SELECT SUM(score) as total FROM answers WHERE eval_id = $id;
+    ";
+    $result = $conn->query($sql);
+
+    if($result == TRUE){
+      return $result->fetch_assoc();
+      
+    }else{
+        die('ERROR: '.$conn->error);
+    }
+
+}
+function get_total_question($id){
+    $conn = connect_db();
+    $sql = "SELECT DISTINCT question_id FROM answers WHERE eval_id = '$id';
+    ";
+    $result = $conn->query($sql);
+
+    if($result == TRUE){
+      return $result->num_rows;
+      
+    }else{
+        die('ERROR: '.$conn->error);
+    }
+
+}
+
 
 
 ?>

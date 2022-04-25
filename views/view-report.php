@@ -3,6 +3,13 @@ include '../controller/functions.php';
 $eval = get_eval_detail($_GET['eval_id']);
 $teacher = get_one_data('teachers', 'teacher_id', $eval['teacher_id']);
 $criteria = get_criteria($eval['id']);
+$img = show_img();
+$score = get_total_score($_GET['eval_id']);
+$ques_count = get_total_question($_GET['eval_id']);
+
+$total_wm_score = $score['total'] / $ques_count;
+
+
 
 function solve($r1, $r2, $r3, $r4, $r5)
 {
@@ -20,7 +27,7 @@ function solve($r1, $r2, $r3, $r4, $r5)
     <a href="manage-reports.php" class="btn btn-outline-success"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
 
     <div class="row">
-        <div class="col-12" style="background-image: url('../images/HEADER.JPG'); 
+        <div class="col-12" style="background-image: url('uploads/<?php echo $img['name'] ?>'); 
             height:200px;
             width:100%;
             background-repeat:no-repeat;
@@ -72,7 +79,12 @@ function solve($r1, $r2, $r3, $r4, $r5)
 
             <div class="row mt-5">
                 <div class="col-12">
-                    <?php foreach ($criteria as $cri_row) : ?>
+                    <?php
+                    
+                    foreach ($criteria as $cri_row) :
+                    
+
+                    ?>
                         <p class="lead"><?php echo $cri_row['criteria_name'] ?></p>
                         <?php
 
@@ -92,7 +104,10 @@ function solve($r1, $r2, $r3, $r4, $r5)
 
                             </thead>
                             <tbody>
-                                <?php foreach ($answers as $row) : ?>
+                                <?php
+
+                                foreach ($answers as $row) :
+                                ?>
 
                                     <tr>
                                         <td><?php echo $row['question_id'] ?></td>
@@ -102,7 +117,10 @@ function solve($r1, $r2, $r3, $r4, $r5)
                                         <td><?php echo $sc2 =  count_student_number($row['question_id'], '2', $cri_row['criteria_name']) ?></td>
                                         <td><?php echo $sc1 =  count_student_number($row['question_id'], '1', $cri_row['criteria_name']) ?></td>
                                         <td>
-                                            <?php echo number_format(solve($sc5, $sc4, $sc3, $sc2, $sc1) / total_student_count($row['question_id']), 1); ?>
+                                            <?php
+                                            $init_total =  solve($sc5, $sc4, $sc3, $sc2, $sc1) / total_student_count($row['question_id']);
+                                            echo number_format($init_total, 1);
+                                            ?>
                                         </td>
 
 
@@ -114,10 +132,14 @@ function solve($r1, $r2, $r3, $r4, $r5)
                             </tbody>
 
                         </table>
-
+                       
 
 
                     <?php endforeach; ?>
+                
+                </div>
+                <div class="p-5 bg-light">
+                    <p class="text-lead text-end">OVERALL WM TOTAL: <?php echo $total_wm_score ?></p>
                 </div>
             </div>
             <div class="row mt-5">
@@ -142,18 +164,18 @@ function solve($r1, $r2, $r3, $r4, $r5)
 
                     <?php } else { ?>
 
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                              <strong>NO COMMENTS ON THIS REPORT</strong> 
-                            </div>
-                            
-                            <script>
-                              var alertList = document.querySelectorAll('.alert');
-                              alertList.forEach(function (alert) {
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <strong>NO COMMENTS ON THIS REPORT</strong>
+                        </div>
+
+                        <script>
+                            var alertList = document.querySelectorAll('.alert');
+                            alertList.forEach(function(alert) {
                                 new bootstrap.Alert(alert)
-                              })
-                            </script>
-                            
+                            })
+                        </script>
+
 
                     <?php  } ?>
                 </div>
