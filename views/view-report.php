@@ -7,8 +7,7 @@ $img = show_img();
 $score = get_total_score($_GET['eval_id']);
 $ques_count = get_total_question($_GET['eval_id']);
 
-$total_wm_score = $score['total'] / $ques_count;
-
+// echo $ques_count;
 
 
 function solve($r1, $r2, $r3, $r4, $r5)
@@ -80,7 +79,7 @@ function solve($r1, $r2, $r3, $r4, $r5)
             <div class="row mt-5">
                 <div class="col-12">
                     <?php
-                    
+                    $total_wm = 0;
                     foreach ($criteria as $cri_row) :
                     
 
@@ -125,7 +124,7 @@ function solve($r1, $r2, $r3, $r4, $r5)
 
 
 
-
+                                    <?php $total_wm = $total_wm + $init_total; ?>
                                     </tr>
                                 <?php endforeach ?>
 
@@ -139,7 +138,7 @@ function solve($r1, $r2, $r3, $r4, $r5)
                 
                 </div>
                 <div class="p-5 bg-light">
-                    <p class="text-lead text-end">OVERALL WM TOTAL: <?php echo $total_wm_score ?></p>
+                    <p class="text-lead text-end">OVERALL WM TOTAL: <?php echo number_format($total_wm / $ques_count,1) ?></p>
                 </div>
             </div>
             <div class="row mt-5">

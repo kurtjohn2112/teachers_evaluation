@@ -20,6 +20,7 @@
                         <a class="dropdown-item" href="admin-users.php">Users <i class="fa fa-user float-end" aria-hidden="true"></i></a>
                         <a class="dropdown-item" href="#">Rankings <i class="fas fa-crown float-end   "></i></a>
                         <a class="dropdown-item" href="manage-teachers.php">Add teacher <i class="fa fa-line-chart float-end" aria-hidden="true"></i> </a>
+                        <a class="dropdown-item" href="upload-img.php">Upload Header <i class="fas fa-images"></i>  </a>
                         <a class="dropdown-item" href="logout.php?admin">Logout <i class="fas fa-door-open float-end   "></i></a>
 
                     </div>

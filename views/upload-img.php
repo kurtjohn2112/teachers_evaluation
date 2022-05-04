@@ -1,18 +1,21 @@
-<?php 
+<?php
 include '../controller/functions.php';
-if(isset($_POST['upload'])){
+if (isset($_POST['upload'])) {
     $img = $_FILES['img']['name'];
     $dir = 'uploads/';
-    $target_dir = $dir.basename($img);
+    $target_dir = $dir . basename($img);
 
     $validate = upload_img($img);
 
-    if($validate == 1){
-        move_uploaded_file($_FILES['img']['tmp_name'],$target_dir);
-    }else{
+    if ($validate == 1) {
+        move_uploaded_file($_FILES['img']['tmp_name'], $target_dir);
+        echo '<div class="alert alert-warning alert-dismissible fade show"          role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <strong>Header Uploaded Successfully, Check reports <a href="manage-reports.php" class="alert-link"> here </a></strong> 
+            </div>';
+    } else {
         echo "ERROR";
     }
-
 }
 
 
@@ -36,7 +39,6 @@ if(isset($_POST['upload'])){
 <body class="bg-light">
     <section class="mt-5 p-5">
         <div class="container">
-            <div class="h1"> <a href="index.php"><i class="fas fa-arrow-left"></i></a> </div>
             <div class="card w-50 mx-auto shadow">
                 <div class="card-header p-4 bg-dark"></div>
                 <div class="card-body">
